@@ -1,50 +1,17 @@
-// ===========================
-// GLOBAL VARIABLES
-// ===========================
 const currentYear = new Date().getFullYear();
-
-// ===========================
-// FUNCTION: Calculate Price with Discount
-// ===========================
-/**
- * Calculates the total price with optional discount
- * @param {number} unitPrice - Price per unit
- * @param {number} quantity - Number of units
- * @param {number} discountPercent - Discount percentage (0-100)
- * @returns {number} - Final price after discount
- */
 function calculatePrice(unitPrice, quantity, discountPercent = 0) {
     const subtotal = unitPrice * quantity;
     const discount = subtotal * (discountPercent / 100);
     const total = subtotal - discount;
     return total;
 }
-
-/**
- * Formats a number as currency (EUR)
- * @param {number} amount - Amount to format
- * @returns {string} - Formatted currency string
- */
 function formatCurrency(amount) {
     return amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + ' EUR';
 }
-
-// ===========================
-// DYNAMIC CONTENT GENERATION
-// ===========================
-
-/**
- * Generates a special offer banner dynamically
- */
 function generateSpecialOffer() {
-    // Check if we're on home page
     const mainElement = document.querySelector('main');
     if (!mainElement) return;
-
-    // Check if special offer already exists
     if (document.querySelector('.special-offer')) return;
-
-    // Create special offer section
     const offerSection = document.createElement('section');
     offerSection.className = 'special-offer';
     offerSection.style.cssText = `
@@ -54,13 +21,9 @@ function generateSpecialOffer() {
         text-align: center;
         margin: 40px 0;
     `;
-
-    // Calculate discount price
     const originalPrice = 2499;
     const discountPercent = 20;
     const discountedPrice = calculatePrice(originalPrice, 1, discountPercent);
-
-    // Create content
     offerSection.innerHTML = `
         <div class="container">
             <h2 style="font-size: 2.2rem; margin-bottom: 15px;">🎉 Ofertă Specială - Reducere ${discountPercent}%!</h2>
@@ -74,8 +37,6 @@ function generateSpecialOffer() {
             <a href="contact.html" class="btn-primary">Profită Acum!</a>
         </div>
     `;
-
-    // Insert after hero section or at beginning of main
     const heroSection = document.querySelector('.hero');
     if (heroSection && heroSection.nextElementSibling) {
         heroSection.parentNode.insertBefore(offerSection, heroSection.nextElementSibling);
@@ -83,47 +44,35 @@ function generateSpecialOffer() {
         mainElement.insertBefore(offerSection, mainElement.firstChild);
     }
 }
-
-/**
- * Generates service cards dynamically from data
- */
 function generateServiceCards() {
     const servicesContainer = document.getElementById('dynamic-services');
     if (!servicesContainer) return;
-
-    // Service data
     const services = [
         {
             title: 'Web Development',
-            icon: '🌐',
             description: 'Site-uri moderne și responsive',
             basePrice: 1200,
             features: ['Design responsive', 'Optimizare SEO', 'CMS Integration']
         },
         {
             title: 'Mobile Apps',
-            icon: '📱',
             description: 'Aplicații iOS și Android',
             basePrice: 5000,
             features: ['Native & Cross-platform', 'UI/UX Design', 'App Store Publishing']
         },
         {
             title: 'Consultanță IT',
-            icon: '💼',
             description: 'Strategie și optimizare',
             basePrice: 100,
             features: ['Audit tehnologic', 'Cloud migration', 'Security consulting']
         },
         {
             title: 'Mentenanță',
-            icon: '🔧',
             description: 'Suport tehnic continuu',
             basePrice: 300,
             features: ['Backup zilnic', 'Actualizări', 'Monitoring 24/7']
         }
     ];
-
-    // Create cards container
     const cardsWrapper = document.createElement('div');
     cardsWrapper.style.cssText = `
         display: grid;
@@ -131,8 +80,6 @@ function generateServiceCards() {
         gap: 30px;
         margin-top: 30px;
     `;
-
-    // Generate each card
     services.forEach(service => {
         const card = document.createElement('div');
         card.style.cssText = `
@@ -168,8 +115,6 @@ function generateServiceCards() {
                 transition: background-color 0.3s ease;
             ">Află mai mult</a>
         `;
-        
-        // Add hover effect
         card.addEventListener('mouseenter', function() {
             this.style.transform = 'translateY(-10px)';
             this.style.boxShadow = '0 10px 30px rgba(0,0,0,0.2)';
@@ -185,10 +130,6 @@ function generateServiceCards() {
 
     servicesContainer.appendChild(cardsWrapper);
 }
-
-/**
- * Generates a dynamic pricing calculator
- */
 function generatePricingCalculator() {
     const calculatorContainer = document.getElementById('pricing-calculator');
     if (!calculatorContainer) return;
@@ -258,8 +199,6 @@ function generatePricingCalculator() {
     `;
 
     calculatorContainer.appendChild(calculator);
-
-    // Add event listeners for real-time calculation
     const serviceType = calculator.querySelector('#serviceType');
     const quantity = calculator.querySelector('#quantity');
     const quantityValue = calculator.querySelector('#quantityValue');
@@ -285,22 +224,12 @@ function generatePricingCalculator() {
     quantity.addEventListener('input', updatePrice);
     clientType.addEventListener('change', updatePrice);
 }
-
-// ===========================
-// FORM HANDLING
-// ===========================
-
-/**
- * Handles contact form submission
- */
 function handleContactForm() {
     const form = document.getElementById('contactForm');
     if (!form) return;
 
     form.addEventListener('submit', function(e) {
         e.preventDefault();
-
-        // Get form data
         const formData = {
             name: document.getElementById('name').value,
             email: document.getElementById('email').value,
@@ -310,28 +239,16 @@ function handleContactForm() {
             budget: document.getElementById('budget').value,
             message: document.getElementById('message').value
         };
-
-        // Simulate form submission
         alert(`Mulțumim, ${formData.name}!\n\nMesajul tău a fost trimis cu succes. Îți vom răspunde în maxim 24 de ore la adresa ${formData.email}.\n\nDetalii:\n- Serviciu: ${formData.service}\n- Buget: ${formData.budget}`);
-
-        // Reset form
         form.reset();
     });
 }
-
-// ===========================
-// UPDATE COPYRIGHT YEAR
-// ===========================
 function updateCopyrightYear() {
     const footerBottom = document.querySelector('.footer-bottom p');
     if (footerBottom) {
         footerBottom.textContent = `© ${currentYear} TechSolutions. Toate drepturile rezervate.`;
     }
 }
-
-// ===========================
-// SMOOTH SCROLLING
-// ===========================
 function enableSmoothScrolling() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
@@ -347,31 +264,14 @@ function enableSmoothScrolling() {
     });
 }
 
-// ===========================
-// INITIALIZATION
-// ===========================
 document.addEventListener('DOMContentLoaded', function() {
-    // Update copyright year
     updateCopyrightYear();
-    
-    // Generate dynamic content based on current page
     generateSpecialOffer();
     generateServiceCards();
     generatePricingCalculator();
-    
-    // Initialize form handling
     handleContactForm();
-    
-    // Enable smooth scrolling
     enableSmoothScrolling();
     
     console.log('TechSolutions website initialized successfully!');
     console.log(`Current year: ${currentYear}`);
 });
-
-// ===========================
-// EXAMPLE USAGE OF calculatePrice
-// ===========================
-// You can call this function from anywhere:
-// const price = calculatePrice(1000, 3, 15); // 1000 EUR × 3 units with 15% discount
-// console.log(formatCurrency(price)); // Output: "2,550.00 EUR"
