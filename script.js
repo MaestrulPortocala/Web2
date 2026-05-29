@@ -26,7 +26,7 @@ function generateSpecialOffer() {
     const discountedPrice = calculatePrice(originalPrice, 1, discountPercent);
     offerSection.innerHTML = `
         <div class="container">
-            <h2 style="font-size: 2.2rem; margin-bottom: 15px;">🎉 Ofertă Specială - Reducere ${discountPercent}%!</h2>
+            <h2 style="font-size: 2.2rem; margin-bottom: 15px;">Ofertă Specială - Reducere ${discountPercent}%!</h2>
             <p style="font-size: 1.2rem; margin-bottom: 20px;">
                 Pachetul Business la doar <strong>${formatCurrency(discountedPrice)}</strong> 
                 <span style="text-decoration: line-through; opacity: 0.7;">${formatCurrency(originalPrice)}</span>
