@@ -1,6 +1,4 @@
-/* ===========================
-   RESET & GLOBAL STYLES
-   =========================== */
+
 * {
     margin: 0;
     padding: 0;
@@ -19,10 +17,6 @@ body {
     margin: 0 auto;
     padding: 0 20px;
 }
-
-/* ===========================
-   HEADER & NAVIGATION
-   =========================== */
 header {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
@@ -82,14 +76,10 @@ nav ul li a.active {
     font-weight: 700;
 }
 
-/* ===========================
-   MAIN CONTENT
-   =========================== */
 main {
     min-height: calc(100vh - 200px);
 }
 
-/* Hero Section */
 .hero {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
@@ -125,8 +115,6 @@ main {
 .page-header p {
     font-size: 1.2rem;
 }
-
-/* Buttons */
 .btn-primary,
 .btn-secondary,
 .btn-package {
@@ -173,10 +161,6 @@ main {
 .btn-package:hover {
     background-color: #5568d3;
 }
-
-/* ===========================
-   HOME PAGE
-   =========================== */
 .about {
     padding: 60px 0;
     background-color: white;
@@ -226,10 +210,6 @@ main {
     margin-bottom: 10px;
     font-size: 1.5rem;
 }
-
-/* ===========================
-   SERVICES PAGE
-   =========================== */
 .services-detail {
     padding: 60px 0;
     background-color: white;
@@ -319,10 +299,6 @@ main {
     color: #667eea;
     margin-bottom: 10px;
 }
-
-/* ===========================
-   PRICING PAGE
-   =========================== */
 .pricing-tables {
     padding: 60px 0;
     background-color: white;
@@ -369,8 +345,6 @@ main {
 .price-table tbody tr:nth-child(even) {
     background-color: #fafafa;
 }
-
-/* Packages Section */
 .packages {
     padding: 60px 0;
     background-color: #f0f0f0;
@@ -471,9 +445,6 @@ main {
     margin-bottom: 10px;
 }
 
-/* ===========================
-   CONTACT PAGE
-   =========================== */
 .contact-content {
     padding: 60px 0;
     background-color: white;
@@ -485,7 +456,6 @@ main {
     gap: 50px;
 }
 
-/* Contact Form */
 .contact-form-wrapper h2 {
     color: #667eea;
     font-size: 2rem;
@@ -613,7 +583,6 @@ main {
     color: #666;
 }
 
-/* Map Section */
 .map-section {
     padding: 60px 0;
     background-color: #f0f0f0;
@@ -638,7 +607,6 @@ main {
     font-size: 1.1rem;
 }
 
-/* FAQ Section */
 .faq-section {
     padding: 60px 0;
     background-color: white;
@@ -695,9 +663,6 @@ main {
     line-height: 1.6;
 }
 
-/* ===========================
-   CTA SECTION
-   =========================== */
 .cta {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
@@ -715,9 +680,6 @@ main {
     margin-bottom: 30px;
 }
 
-/* ===========================
-   FOOTER
-   =========================== */
 footer {
     background-color: #2c3e50;
     color: white;
@@ -762,9 +724,6 @@ footer {
     color: #bbb;
 }
 
-/* ===========================
-   ANIMATIONS
-   =========================== */
 @keyframes fadeInDown {
     from {
         opacity: 0;
@@ -787,9 +746,6 @@ footer {
     }
 }
 
-/* ===========================
-   RESPONSIVE DESIGN
-   =========================== */
 @media (max-width: 768px) {
     header .container {
         flex-direction: column;
